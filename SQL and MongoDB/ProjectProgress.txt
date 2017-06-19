@@ -1,0 +1,106 @@
+MongoDB Data Insert:
+
+
+db.movies.insert({Title: "Avatar", Year: 2009, Length: "2h 42m", Genre: "Action/Science", Ratings: "7.9/10"});
+db.movies.insert({Title: "Billy Madison", Year: 1995, Length: "1h 30m", Genre: "Comedy", Ratings: "6.4/10"});  
+db.movies.insert({Title: "Saw", Year: 2004, Length: "1h 43m", Genre: "Horror", Ratings: "7.7/10"});  
+db.movies.insert({Title: "Star Wars Episode Vll", Year: 2015, Length: "2h 15m", Genre: "Action", Rating: "8.3/10"});  
+db.movies.insert({Title: "The Grudge", Year: 2004, Length: "1h 36m", Genre: "Horror", Rating: "5.9/10"});  
+db.movies.insert({Title: "Toy Story", Year: 1995, Length: "1h 21m", Genre: "Animation/Comedy", Rating: "8.3/10"});  
+db.movies.insert({Title: "Radio", Year: 2003, Length: "1h 49m", Genre: "Drama/Sports", Rating: "6.9/10"});  
+db.movies.insert({Title: "Twilight", Year: 2008, Length: "1h 55m", Genre: "Fantasy", Rating: "5.5/10"});  
+db.movies.insert({Title: "Insidious", Year: 2010, Length: "1h 43m", Genre: "Horror", Rating: "6.8/10"});  
+db.movies.insert({Title: "Forrest Gump", Year: 1994, Length: "2h 25m", Genre: "Comedy/Romance/Drama", Rating: "8.8/10"});  
+db.movies.insert({Title: "Harry Potter and the Chamber of Secrets", Year: 2002, Length: "2h 54m", Genre: "Fantasy/Drama", Rating: "7.4/10"});
+db.movies.insert({
+Title: "Beerfest",
+Year: 2006,
+Length: "1h 57m",
+Genre: "Comedy",
+Rating: "6.3/10"
+});
+
+db.movies.insert({
+Title: "A Clockwork Orange",
+Year: 1971,
+Length: "2h 17m",
+Genre: "Crime/Science",
+Rating: "8.4/10"
+});
+
+db.movies.insert({
+Title: "Homeward Bound: The Incredible Journey",
+Year: 1993,
+Length: "1h 25m",
+Genre: "Drama/Adventure",
+Rating: "6.9/10"
+});
+
+db.movies.insert({
+Title: "Ocean's Eleven",
+Year: 2001,
+Length: "2h 7m",
+Genre: "Crime/Thriller",
+Rating: "7.8/10"
+});
+
+db.movies.insert({
+Title: "Dude, Where's My Car?",
+Year: 2000,
+Length: "1h 23m",
+Genre: "Mystery/Science",
+Rating: "5.5/10"
+});
+
+db.movies.insert({
+Title: "Pineapple Express",
+Year: 2008,
+Length: "1h 57m",
+Genre: "Comedy",
+Rating: "7.0/10"
+});
+
+db.movies.insert({
+Title: "High Tension",
+Year: 2003,
+Length: "1h 35m",
+Genre: "Slasher/Thriller",
+Rating: "6.8/10"
+});
+
+db.movies.insert({
+Title: "Pulp Fiction",
+Year: 1994,
+Length: "2h 58m",
+Genre: "Crime/Drama",
+Rating: "8.9/10"
+});
+
+db.movies.insert({
+Title: "Lords of Dogtown",
+Year: 2005,
+Length: "1h 47m",
+Genre: "Sport/Drama",
+Rating: "7.1/10"
+});   
+
+
+Node.js Code:
+
+var mclient = require('mongodb').MongoClient;
+
+mclient.connect('mongodb://localhost:27017/blockbuster', function(err, dbconn){
+  if(!err) { //sucessful mongo connect
+    console.log('We connected to our mongo server. Yay!....');
+    var stuCollection = dbconn.collection('movies');
+    stuCollection.find({}).toArray(function(err, results){
+      if(!err) {
+        console.log(results);
+      }else {
+        console.log(err);
+      }
+    });
+  } else { //mongo connect error
+    console.log(err);
+  }
+});
